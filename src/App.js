@@ -1,16 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { complexText } from './components/CheckText/ComplexText';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello! This is my first react.js extension!
-        </p>
-      </header>
+    <div className="extension">
+      <h1>This text: "Translate words while reading an article or watching your favourite movie." is simple for
+        <h2>{complexText("Translate words while reading an article or watching your favourite movie.")}</h2>
+      </h1>
     </div>
   );
 }
