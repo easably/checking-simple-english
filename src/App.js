@@ -2,39 +2,48 @@ import React, { Component } from 'react';
 
 import { simple_1000_Text } from './components/CheckText/Simple_1000_Text';
 import { simple_100_Text } from './components/CheckText/Simple_100_Text';
+import { getDOMText } from './components/GetDOMText/getDOMText';
 
 
 export default class App extends Component {
 
   state = {
-    text: ''
+    text: '',
   }
 
   componentDidMount() {
     document.addEventListener("mouseup", this.getText);
   }
 
+  componentWillUnmount() {
+    document.removeEventListener("mouseup", this.getText);
+    getDOMText();
+  }
+
   getText = e => {
+    
     let getSelection = window.getSelection && window.getSelection();
+
     if (
       getSelection &&
       getSelection.rangeCount &&
       getSelection.rangeCount > 0
     ) {
+
       this.setState({
         text: getSelection.toString()
-      })
+      });
     }
   };
 
-
+  
   render() {
 
     const { text } = this.state;
 
     return (
 
-      <div className="extension">
+      <div className="Extension">
 
         <h1 style={{ color: "blue" }}>Highlight any text to extimate it's simplicity based on most common English words</h1>
 
@@ -58,5 +67,8 @@ export default class App extends Component {
 
     );
   }
-}
+};
+
+
+
 

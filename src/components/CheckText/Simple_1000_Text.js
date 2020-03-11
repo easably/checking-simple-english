@@ -19,3 +19,4 @@ export const simple_1000_Text = (text) => {
   return `${textSimplicity}%`;
   
 };
+
