@@ -53,6 +53,7 @@ export default class App extends Component {
         of 1000 most common English words
         and <span style={{ fontWeight: "900", color: 'red' }}>{simple_100_Text(text)} </span>
         of 100 most common English words</h1>
+        
       </div>
 
     );
