@@ -1,21 +1,21 @@
-
-import { common_1000_EnglishWords } from '../../assets/EnglishCommonWords/1000_Words/1000_words';
+import { common_100_EnglishWords } from '../../assets/EnglishCommonWords/100_Words/100_words';
 
 
 // Export reusable function to check text's complexity
-export const simpleText = (text) => {
+export const simple_100_Text = (text) => {
 
   const wordsArray = text.replace(/[,.!?]/, "").split(/\s+/);
 
   let numberMatches = 0;
 
   wordsArray.forEach((word) => {
-    if(common_1000_EnglishWords.some(e => e.toUpperCase() === word.toUpperCase())) {
+    if(common_100_EnglishWords.some(e => e.toUpperCase() === word.toUpperCase())) {
       numberMatches++;
     }
   });
 
   const textSimplicity = (numberMatches / wordsArray.length * 100).toFixed(1);
   
-  return `${textSimplicity} %`;
+  return `${textSimplicity}%`;
+  
 };
