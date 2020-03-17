@@ -14,6 +14,8 @@ export const simple_1000_Text = (text) => {
     }
   });
 
+  
+
   const textSimplicity = (numberMatches / wordsArray.length * 100).toFixed(1);
   
   return `${textSimplicity}%`;

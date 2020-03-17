@@ -8,7 +8,8 @@ import { getDOMText } from './components/GetDOMText/getDOMText';
 export default class App extends Component {
 
   state = {
-    text: '',
+    selectedText: '',
+    bodyText: '',
   }
 
   componentDidMount() {
@@ -17,7 +18,6 @@ export default class App extends Component {
 
   componentWillUnmount() {
     document.removeEventListener("mouseup", this.getText);
-    getDOMText();
   }
 
   getText = e => {
@@ -31,7 +31,7 @@ export default class App extends Component {
     ) {
 
       this.setState({
-        text: getSelection.toString()
+        selectedText: getSelection.toString()
       });
     }
   };
@@ -39,11 +39,21 @@ export default class App extends Component {
   
   render() {
 
-    const { text } = this.state;
+    getDOMText();
+
+    const { selectedText, bodyText } = this.state;
 
     return (
 
       <div className="Extension">
+
+      {/* <h1>This page covers {simple_1000_Text(bodyText)} of common 1000 English words 
+                                    and {simple_100_Text(bodyText)} of common 100 English words.
+      </h1> */}
+
+        <h1 style={{ color: "red" }}>Statistics of page's body will go here: </h1>
+
+        <br/>
 
         <h1 style={{ color: "blue" }}>Highlight any text to extimate it's simplicity based on most common English words</h1>
 
@@ -58,9 +68,9 @@ export default class App extends Component {
         <h2>In the first batch of results, released late Tuesday, former Vice President Joe Biden and Vermont Sen.
           Bernie Sanders were essentially tied, with each winning about 33% of the roughly 1 million votes counted.</h2>
 
-        <h1 style={{ color: "blue" }}>Your text covers <span style={{ fontWeight: "900", color: 'red' }}>{simple_1000_Text(text)} </span>
+        <h1 style={{ color: "blue" }}>Your text covers <span style={{ fontWeight: "900", color: 'red' }}>{simple_1000_Text(selectedText)} </span>
         of 1000 most common English words
-        and <span style={{ fontWeight: "900", color: 'red' }}>{simple_100_Text(text)} </span>
+        and <span style={{ fontWeight: "900", color: 'red' }}>{simple_100_Text(selectedText)} </span>
         of 100 most common English words</h1>
         
       </div>
