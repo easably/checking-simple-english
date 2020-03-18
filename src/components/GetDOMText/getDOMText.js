@@ -1,17 +1,24 @@
 /*global chrome*/
 
+export const getDOMText = async () => {
 
-export const getDOMText = () => {
+  return new Promise((resolve, reject) => {
 
-  chrome.tabs.query({active: true}, (tabs) => {
+    chrome.tabs.query({ active: true }, tabs => {
+      
+      var tab = tabs[0];
 
-  var tab = tabs[0];
+      chrome.tabs.executeScript(
+        tab.id,
+        {
+          code: 'document.querySelector("body").innerText'
+        },
 
-  chrome.tabs.executeScript(tab.id, {
-    code: 'document.querySelector("body").innerText'
-  }, (results) => {
-    console.log(results);
+        results => {
+          resolve(results && results[0]);
+        }
+
+      );
+    });
   });
-  
-});
 };
