@@ -1,0 +1,1 @@
+export const my_Vocabulary = ["Some", "often", "transaction", "popularity", "access", "developer"];
