@@ -2,10 +2,12 @@
 import React, { Component } from 'react';
 
 import { checkTextSimple } from './helpers/checkTextSimple/checkTextSimple';
+import { checkWordsNum } from './helpers/checkWordsNum/checkWordsNum';
 import { getDOMText } from './helpers/GetDOMText/getDOMText';
 
 import { common_100_EnglishWords } from './assets/EnglishCommonWords/100_Words/100_words';
 import { common_1000_EnglishWords } from './assets/EnglishCommonWords/1000_Words/1000_words';
+import { my_Vocabulary } from './assets/myVocabulary/myVocabulary';
 
 
 export default class App extends Component {
@@ -17,12 +19,12 @@ export default class App extends Component {
 
   componentDidMount() {
 
-		getDOMText().then(text => {
-			this.setState({
-				bodyText: text
-			})
+    getDOMText().then(text => {
+      this.setState({
+        bodyText: text
+      })
     });
-    
+
     document.addEventListener("mouseup", this.getText);
   }
 
@@ -31,7 +33,7 @@ export default class App extends Component {
   }
 
   getText = e => {
-    
+
     let getSelection = window.getSelection && window.getSelection();
 
     if (
@@ -46,7 +48,7 @@ export default class App extends Component {
     }
   };
 
-  
+
   render() {
 
     const { selectedText, bodyText } = this.state;
@@ -55,27 +57,31 @@ export default class App extends Component {
 
       <div className="Extension">
 
-        <h1 style={{ color: "red" }}>Statistics of page's body will go here: </h1>
-        
-      <h2>This page covers <span style={{ fontWeight: "900", color:"red"}}>{checkTextSimple(bodyText, common_1000_EnglishWords)}</span> of 
-      common 1000 English words 
-      and <span style={{ fontWeight: "900", color:"red"}}>{checkTextSimple(bodyText, common_100_EnglishWords)}</span> of 
-      common 100 English words.
-      </h2>
+        <h1 style={{ color: "red" }}>Statistics of page's content: </h1>
 
-        <br/>
+        <h2>Words from "Common Thousand": <span style={{ color: "red" }}>{checkWordsNum(bodyText, common_1000_EnglishWords)}</span>, <br/> 
+        covers <span style={{ color: "red" }}>{checkTextSimple(bodyText, common_1000_EnglishWords)}</span> of page's content.
+    </h2>
+        <h2>Words from "Common Hundred": <span style={{ color: "red" }}>{checkWordsNum(bodyText, common_100_EnglishWords)}</span>, <br/>
+        covers <span style={{ color: "red" }}>{checkTextSimple(bodyText, common_100_EnglishWords)}</span> of page's content.
+    </h2>
+        <h2>Words from "My Vocabulary": <span style={{ color: "red" }}>{checkWordsNum(bodyText, my_Vocabulary)}</span>, 
+        covers <span style={{ color: "red" }}>{checkTextSimple(bodyText, my_Vocabulary)}</span>.
+    </h2>
+
+        <br />
 
         <h1 style={{ color: "blue" }}>Highlight any text to extimate it's simplicity based on most common English words</h1>
 
         <h2>In the first batch of results, released late Tuesday, former Vice President Joe Biden and Vermont Sen.
           Bernie Sanders were essentially tied, with each winning about 33% of the roughly 1 million votes counted.</h2>
 
-        <h1 style={{ color: "blue" }}>Your text 
-        covers <span style={{ fontWeight: "900", color: 'red' }}>{checkTextSimple(selectedText, common_1000_EnglishWords)} </span>
+        <h1 style={{ color: "blue" }}>Your text
+        covers <span style={{ color: 'red' }}>{checkTextSimple(selectedText, common_1000_EnglishWords)} </span>
         of 1000 most common English words
-        and <span style={{ fontWeight: "900", color: 'red' }}>{checkTextSimple(selectedText, common_100_EnglishWords)} </span>
+        and <span style={{ color: 'red' }}>{checkTextSimple(selectedText, common_100_EnglishWords)} </span>
         of 100 most common English words</h1>
-        
+
       </div>
 
     );
