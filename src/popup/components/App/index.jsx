@@ -1,13 +1,12 @@
-
 import React, { Component } from 'react';
 
-import { checkTextSimple } from './helpers/checkTextSimple/checkTextSimple';
-import { checkWordsNum } from './helpers/checkWordsNum/checkWordsNum';
-import { getDOMText } from './helpers/GetDOMText/getDOMText';
+import { checkTextSimple } from '../../helpers/checkTextSimple/checkTextSimple';
+import { checkWordsNum } from '../../helpers/checkWordsNum/checkWordsNum';
+import { getDOMText } from '../../helpers/GetDOMText/getDOMText';
 
-import { common_100_EnglishWords } from './assets/EnglishCommonWords/100_Words/100_words';
-import { common_1000_EnglishWords } from './assets/EnglishCommonWords/1000_Words/1000_words';
-import { my_Vocabulary } from './assets/myVocabulary/myVocabulary';
+import { common_100_EnglishWords } from '../../../assets/EnglishCommonWords/100_Words/100_words';
+import { common_1000_EnglishWords } from '../../../assets/EnglishCommonWords/1000_Words/1000_words';
+import { my_Vocabulary } from '../../../assets/myVocabulary/myVocabulary';
 
 
 export default class App extends Component {
@@ -55,7 +54,7 @@ export default class App extends Component {
 
     return (
 
-      <div className="Extension">
+      <div style={{ width: "450px" }}>
 
         <h1 style={{ color: "red" }}>Statistics of page's content: </h1>
 
