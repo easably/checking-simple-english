@@ -35,7 +35,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack --config webpack/webpack.serve.js --watch",
