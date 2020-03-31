@@ -10,6 +10,8 @@ import { my_Vocabulary } from '../../../assets/myVocabulary/myVocabulary';
 
 import "./Main.scss";
 import Spinner from '../../components/Spinner';
+import PieChart from '../../components/PieChart';
+
 
 const main = () => {
 
@@ -41,6 +43,8 @@ const main = () => {
     <h3>Words from "My Vocabulary": <span style={{ color: "red" }}>{checkWordsNum(bodyText, my_Vocabulary)}</span>,
     covers <span style={{ color: "red" }}>{checkTextSimple(bodyText, my_Vocabulary)}</span>.
 </h3>
+<br/> <br/>
+    <PieChart />
   </div>
   );
 };
